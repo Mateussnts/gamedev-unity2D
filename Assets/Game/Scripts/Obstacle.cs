@@ -5,6 +5,7 @@ using UnityEngine;
 public class Obstacle : MonoBehaviour{
     
     private Rigidbody2D obsRB;
+    public GameConfiguration config;
 
     void Start(){
         
@@ -13,6 +14,6 @@ public class Obstacle : MonoBehaviour{
 
     void Update(){
 
-        obsRB.velocity = new Vector2(-5f, 0f);    
+        obsRB.velocity = new Vector2(-config.speed, 0f);    
     }
 }

@@ -6,7 +6,9 @@ public class BackgroundTextureAnimator : MonoBehaviour{
 
     private Material mat;
     private Vector2 offset;
-    public float speed = 0.2f;
+    public float factor = 40f;
+
+    public GameConfiguration config;
 
     void Start(){
         
@@ -16,7 +18,7 @@ public class BackgroundTextureAnimator : MonoBehaviour{
     }
 
     void Update(){
-        offset.x = offset.x + (speed * Time.deltaTime);
+        offset.x = offset.x + ((config.speed / factor) * Time.deltaTime);
         mat.SetTextureOffset("_MainTex", offset);
     }
 }

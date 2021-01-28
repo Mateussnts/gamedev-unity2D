@@ -9,9 +9,15 @@ public class ObstacleGenerator : MonoBehaviour{
 
     void Start(){
         InitObstacles();
+    }
+
+    public void GeneratorObstacles(){
         StartCoroutine(SpawnRandomObstacles());
     }
 
+    public void StopGenerator(){
+        StopAllCoroutines();
+    }
     
     void InitObstacles(){
         

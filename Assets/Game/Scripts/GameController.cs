@@ -6,6 +6,9 @@ public class GameController : MonoBehaviour{
     
     private bool isGameRunning;
 
+    public ObstacleGenerator generator;
+    public GameConfiguration config;
+
     void Start(){
         isGameRunning = false;
         GameStart();
@@ -14,12 +17,16 @@ public class GameController : MonoBehaviour{
     void GameStart(){
 
         isGameRunning = true;
+        generator.GeneratorObstacles();
+        config.speed = 4f;
 
     }
 
-    void GameOver(){
-    
+    public void GameOver(){
+
         isGameRunning = false;
+        generator.StopGenerator();
+        config.speed = 0f;
 
     }
 

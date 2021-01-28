@@ -1,12 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class player : MonoBehaviour{
     
     private Rigidbody2D plyRB;
     private Animator animator;
     private bool canJump;
+
+    
+
+    public UnityEvent OnPlayerHitted;
 
     public float jumpFactor = 5f;
     public float forwardFactor = 0.2f;
@@ -42,7 +47,15 @@ public class player : MonoBehaviour{
     }
 
     private void OnCollisionEnter2D(Collision2D collision){
+        
+        if(collision.gameObject.tag == "Obstacle"){
+            OnPlayerHitted.Invoke();
+            animator.Play("player_hitted");
+            plyRB.constraints = RigidbodyConstraints2D.FreezeAll;
+
+        } else{
+            animator.Play("player_running");
+        }
         canJump = true;
-        animator.Play("player_running");
     }
 }
